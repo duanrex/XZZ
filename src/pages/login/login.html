@@ -1,0 +1,35 @@
+<ion-header>
+
+</ion-header>
+
+
+<ion-content class="has-subheader">
+  <div text-center padding-top="50px">
+    <span (longPress)="keyLongPressFn()">
+      <img src="assets/icon/ionic-sign-up-icon.png" width="68" height="68" alt="香至尊助手">
+      </span>
+    <h1>香至尊助手</h1>
+    <h6>(内部版本)</h6>
+  </div>
+  <form (submit)="doLogin()">
+    <ion-list inset>
+      <ion-item>
+        <ion-label>
+          <ion-icon ios="ios-contact" md="md-contact"></ion-icon>
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="account.phone" name="phone" placeholder="用户名"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <ion-icon ios="ios-lock" md="md-lock"></ion-icon>
+        </ion-label>
+        <ion-input type="password" [(ngModel)]="account.password" name="password" placeholder="密码"></ion-input>
+      </ion-item>
+
+    </ion-list>
+    <div padding>
+      <button ion-button color="primary" block>登录</button>
+    </div>
+  </form>
+</ion-content>

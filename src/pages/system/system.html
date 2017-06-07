@@ -1,0 +1,30 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title text-center>修改服务器IP地址及端口</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <form (submit)="updateHostPort(server)">
+    <ion-list>
+
+      <ion-item>
+        <ion-label>IP地址：</ion-label>
+        <ion-input type="text" [(ngModel)]="server.hosturl" name="hosturl" ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>端口：</ion-label>
+        <ion-input type="text" [(ngModel)]="server.port" name="port"></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+    <div padding>
+      <button ion-button color="danger" block>保存</button>
+    </div>
+  </form>
+</ion-content>

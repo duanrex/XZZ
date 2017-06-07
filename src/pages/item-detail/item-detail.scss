@@ -1,0 +1,102 @@
+page-item-detail {
+  .item-profile {
+    width: 100%;
+    background-position: center center;
+    background-size: cover;
+    height: 250px;
+  }
+  .item-detail {
+    width: 100%;
+    background: white;
+    position: absolute;
+  }
+  .col-25 {
+    border: 1px solid #ddd;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .col-25 img {
+    height: 64px;
+    width: 64px;
+  }
+  .col-25 ul li img {
+    height: 64px;
+    width: 64px;
+    margin-top: 12px
+  }
+  .col-25 ul li p {
+    text-align: center;
+  }
+  .grid_wrapper {
+    width: 170px;
+    height: 170px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .grid {
+    margin-left: 5px;
+    margin-top: 5px;
+    list-style-type: none;
+  }
+  .grid:after {
+    content: ".";
+    display: block;
+    line-height: 0;
+    width: 0;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+    overflow: hidden;
+  }
+  .grid li {
+    float: left;
+    line-height: 50px;
+  }
+  .grid li a,
+  .grid li a:visited {
+    display: block;
+    border: 5px solid #ccc;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    margin-left: -5px;
+    margin-top: -5px;
+    position: relative;
+    z-index: 1;
+  }
+  .grid li a:hover {
+    border-color: #f00;
+    z-index: 2;
+  }
+  .action-sheets-basic-page {
+    .ion-md-share {
+      color: #ED4248;
+    }
+    .text {
+      text-align: center
+    }
+    .ion-md-arrow-dropright-circle {
+      color: #508AE4;
+    }
+    .ion-md-heart-outline {
+      color: #31D55F;
+    }
+    .action-sheet-cancel ion-icon,
+    .action-sheet-destructive ion-icon {
+      color: #757575;
+    }
+  }
+  .not-selected img {
+    //opacity: 0.4;
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+
+    filter: grayscale(100%);
+
+    filter: gray;
+  }
+}

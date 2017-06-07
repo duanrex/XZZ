@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-grid>
+    <ion-toolbar>
+      <ion-row text-left>
+        <ion-col>
+          <ion-buttons>
+            <button ion-button icon-only color="royal" (click)="gotoSetting()">
+        <ion-icon name="person-add"></ion-icon>
+      </button>
+          </ion-buttons>
+        </ion-col>
+        <ion-col>
+          <ion-title text-center>香至尊助手</ion-title>
+        </ion-col>
+        <ion-col text-right>
+          <ion-buttons>
+            <button ion-button icon-only color="royal" (click)="gotoSearch()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+          </ion-buttons>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+    <ion-row text-left>
+      <ion-item>
+        <ion-label>切换日期:</ion-label>
+        <ion-datetime style="text-align:center" displayFormat="YYYY/MM/DD" pickerFormat="YYYY-MM-DD" [(ngModel)]="current_date" hourValues="0" minuteValues="0"  cancelText="取消" doneText="确认" (ngModelChange)="onChangeDate()"></ion-datetime>
+      </ion-item>
+    </ion-row>
+  </ion-grid>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngFor="let good of goods">
+    <ion-item (click)="showDetail(good)">
+      <ion-thumbnail item-left>
+        <img *ngIf="good.pictures.length > 0" src="{{good.pictures[0].imageStorageId | imageView}}">
+        <img *ngIf="good.pictures.length == 0" src="assets/icon/xzz.jpg">
+      </ion-thumbnail>
+      <h5><strong>{{good.name}}</strong></h5>
+      <h5>{{ good.createTime | date:'y-MM-dd' }}: {{good.creator.name}}</h5>
+      <p fixed>{{good.content}}</p>
+      <ion-icon ios="ios-arrow-forward" md="md-arrow-forward" item-right></ion-icon>
+    </ion-item>
+  </ion-list>
+  <div *ngIf="noData" style="text-align:center;padding-top:100px">未发现当天分享计划</div>
+  <div *ngIf="noMore" style="text-align:center;padding-bottom:0px">没有更多的数据</div>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingSpinner="circles" refreshingText="正在刷新...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载更多数据...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

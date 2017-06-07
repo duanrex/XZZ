@@ -1,0 +1,4 @@
+.col-25{border: 1px solid #ddd;height: 120px;display:flex;justify-content:center;align-items: center;}
+.col-25 img {height: 64px; width: 64px;}
+.col-25 ul li img {height: 64px; width: 64px;margin-top: 12px}
+.col-25 ul li p {text-align: center;}

@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title text-center>香至尊助手</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-searchbar placeholder="搜索" (search)="getItems($event)" autocorrect="off" showCancelButton="true" cancelButtonText="清除"></ion-searchbar>
+  <ion-list *ngFor="let good of currentItems">
+    <ion-item (click)="showDetail(good)">
+      <ion-thumbnail item-left>
+        <img *ngIf="good.pictures.length > 0" src="{{good.pictures[0].imageStorageId | imageView}}">
+        <img *ngIf="good.pictures.length == 0" src="assets/icon/xzz.jpg">
+      </ion-thumbnail>
+      <h5><strong>{{good.name}}</strong></h5>
+      <p fixed>{{good.content}}</p>
+      <ion-icon ios="ios-arrow-forward" md="md-arrow-forward" item-right></ion-icon>
+    </ion-item>
+  </ion-list>
+  <div *ngIf="noData" style="text-align:center;padding-top:100px">未发现商品信息</div>
+  <div *ngIf="noMore" style="text-align:center;padding-bottom:0px">没有更多的数据</div>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingSpinner="circles" refreshingText="正在刷新...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载更多数据...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

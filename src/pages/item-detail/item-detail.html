@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-grid>
+    <ion-toolbar>
+      <ion-row text-left>
+        <ion-col>
+          <ion-buttons>
+            <button ion-button icon-only color="royal" (click)="goBack()">
+        <ion-icon name="arrow-round-back"></ion-icon>
+      </button>
+          </ion-buttons>
+        </ion-col>
+        <ion-col>
+          <ion-title text-center>香至尊助手</ion-title>
+        </ion-col>
+        <ion-col text-right>
+          <ion-buttons>
+            <button ion-button icon-only color="royal" (click)="goToShare()">
+        <ion-icon ios="ios-share" md="md-share"></ion-icon>
+      </button>
+          </ion-buttons>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-grid>
+</ion-header>
+
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-4 text-center>
+        <ion-thumbnail item-center>
+          <img *ngIf="item.pictures.length > 0" src="{{item.pictures[0].imageStorageId | imageView }}" style="max-width:100%;height:auto;overflow:hidden;">
+          <img *ngIf="item.pictures.length == 0" src="assets/icon/xzz.jpg" style="max-width:100%;height:auto;overflow:hidden;">
+        </ion-thumbnail>
+      </ion-col>
+      <ion-col col-8 text-left>
+        <ion-item no-lines>
+          <h5 ion-text>商品：{{item.name}}</h5>
+          <br/>
+          <h5 ion-text>价格：¥{{item.goodsPrice}}</h5>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <hr />
+  <ion-list no-lines>
+    <ion-item>
+      <h5 ion-text item-left>作者： {{item.creator.name}}</h5>
+      <h5 ion-text item-right>更新于： {{ item.createTime | date:'y-MM-dd' }}</h5>
+    </ion-item>
+    <hr />
+    <ion-item>
+      <ion-textarea rows="6" value="{{item.content}}" readonly>{{item.content}}</ion-textarea>
+    </ion-item>
+  </ion-list>
+  <ion-grid *ngIf="view_images[0].images.length != 0">
+    <ion-row *ngFor="let item of view_images">
+      <ion-col col-4 *ngFor="let image of item.images;">
+        <img src="{{image.imageStorageId | imageView}}" (click)="showImage(image.id)">
+        <!--<ion-avatar (click)="isPublish(image.id)" [class]="image.isChecked">
+           <img src="{{image.imageStorageId | imageView}}">
+        </ion-avatar>-->
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

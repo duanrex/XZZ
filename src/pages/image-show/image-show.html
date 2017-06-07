@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <ion-grid>
+      <ion-toolbar>
+        <ion-row text-left>
+          <ion-col>
+            <ion-buttons>
+              <button ion-button icon-only color="royal" (click)="goBack()">
+        <ion-icon name="arrow-round-back"></ion-icon>
+      </button>
+            </ion-buttons>
+          </ion-col>
+        </ion-row>
+      </ion-toolbar>
+    </ion-grid>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="tutorial-page">
+  <ion-slides pager #myProfile>
+    <ion-slide *ngFor="let image of images">
+      <img src="{{image | imageView}}">
+    </ion-slide>
+  </ion-slides>
+</ion-content>
